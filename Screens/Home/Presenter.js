@@ -1,50 +1,99 @@
 import React from "react";
-import { ActivityIndicator, Dimensions, ScrollView, View } from "react-native";
+import {
+  ActivityIndicator,
+  ScrollView,
+  TouchableOpacity,
+  Text,
+} from "react-native";
+import Slide from "../../Components/SlideComponent/Slide";
+import Horizontal from "../../Components/SlideComponent/Horizontal";
+import SwiperContainer from "../../Components/SlideComponent/SwiperContainer";
+import HorizontalScroll from "../../Components/SlideComponent/HorizontalScroll";
+import HHorizontal from "../../Components/SlideComponent/HHorizontal";
 import styled from "styled-components/native";
-import Swiper from "react-native-web-swiper";
-import Slide from "../../Components/Slide";
+import { useNavigation } from "@react-navigation/native";
+import ScrollContainer from "../../Components/SlideComponent/ScrollContainer";
 
-const { height: HEIGHT } = Dimensions.get("window");
+const Container = styled.View`
+  padding: 0px 15px;
+`;
 
-const SwiperContainer = styled.View`
-  height: ${HEIGHT / 2.5};
+const Router = styled.View`
+  justify-content: flex-end;
   width: 100%;
+  align-items: flex-end;
+  margin-bottom: 10px;
+`;
+
+const RouterButton = styled.View`
+  flex-direction: row;
+  color: white;
+  opacity: 0.8;
+  align-items: center;
+  width: 150px;
+  justify-content: space-between;
 `;
 
 const Presenter = ({
   loading,
   movieNowPlaying,
   moviePopular,
-  movieTopRated,
   movieUpcoming,
 }) => {
+  const navigation = useNavigation();
   return (
-    <ScrollView
-      contentContainerStyle={{
-        flex: loading ? 1 : "auto",
-        justifyContent: loading ? "center" : "auto",
-      }}
-    >
-      {loading ? (
-        <ActivityIndicator color="white" size="large" />
-      ) : (
+    <ScrollContainer loading={loading}>
+      <Container>
+        <Router>
+          <RouterButton>
+            <TouchableOpacity onPress={() => navigation.navigate("Movie")}>
+              <Text style={{ color: "white", fontSize: 16 }}>영화</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => navigation.navigate("TV")}>
+              <Text style={{ color: "white", fontSize: 16 }}>TV 프로그램</Text>
+            </TouchableOpacity>
+          </RouterButton>
+        </Router>
         <SwiperContainer>
-          <Swiper loop timeout={3} controlsEnabled={false}>
-            {movieNowPlaying.map((movie) => (
-              <Slide
-                key={movie.id}
-                id={movie.id}
-                adult={movie.adult}
-                poster={movie.poster_path}
-                language={movie.original_language}
-                title={movie.original_title}
-                genre={movie.genre_ids}
-              />
-            ))}
-          </Swiper>
+          {movieNowPlaying.map((movie) => (
+            <Slide
+              key={movie.id}
+              id={movie.id}
+              adult={movie.adult}
+              poster={movie.poster_path}
+              language={movie.original_language}
+              title={movie.original_title}
+              genre={movie.genre_ids}
+            />
+          ))}
         </SwiperContainer>
-      )}
-    </ScrollView>
+
+        <HorizontalScroll title={"Popular Movies"}>
+          {moviePopular.map((movie) => (
+            <Horizontal
+              key={movie.id}
+              id={movie.id}
+              title={movie.original_title}
+              overview={movie.overview}
+              poster={movie.poster_path}
+            />
+          ))}
+        </HorizontalScroll>
+
+        <HorizontalScroll title={"New on Cinemas"}>
+          {movieUpcoming.map((movie) => (
+            <HHorizontal
+              key={movie.id}
+              id={movie.id}
+              title={movie.original_title}
+              overview={movie.overview}
+              poster={movie.poster_path}
+            />
+          ))}
+        </HorizontalScroll>
+      </Container>
+    </ScrollContainer>
   );
 };
 
