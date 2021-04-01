@@ -7,10 +7,7 @@ const Root = createStackNavigator();
 
 export default () => {
   return (
-    <Root.Navigator
-      headerMode="none"
-      screenOptions={{ headerTintColor: "white" }}
-    >
+    <Root.Navigator headerMode="none">
       <Root.Screen name="Stack" component={Stack} />
       <Root.Screen name="Detail" component={Detail} />
     </Root.Navigator>
