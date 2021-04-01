@@ -1,4 +1,5 @@
 import React from "react";
+import { Text, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 import { apiImagePath } from "../api";
 import { trimText, ButtonColor } from "../utils";
@@ -43,15 +44,15 @@ const HDBox = styled.View`
   border-radius: 3px;
 `;
 
-const HDText = styled.Text``;
-
 const Horizontal = ({ id, title, overview, poster, isShow = false }) => {
   return (
     <Container>
       <Data>
-        <PosterContainer source={{ uri: apiImagePath(poster) }} />
+        <TouchableOpacity onPress={(() => "Detail", { id, isShow })}>
+          <PosterContainer source={{ uri: apiImagePath(poster) }} />
+        </TouchableOpacity>
         <HDBox>
-          <HDText>HD</HDText>
+          <Text>HD</Text>
         </HDBox>
         <Contents>
           <Title>{title}</Title>

@@ -9,6 +9,7 @@ import {
 } from "@expo/vector-icons";
 import { useFonts } from "expo-font";
 import { ButtonColor, trimText } from "../utils";
+import { TouchableOpacity } from "react-native";
 
 const Container = styled.View`
   width: 100%;
@@ -86,7 +87,7 @@ const ButtonText = styled.Text`
   font-family: "OpenSansLight";
 `;
 
-const Slide = ({ poster, title }) => {
+const Slide = ({ poster, title, id }) => {
   const [trailerBackground, setTrailerBackground] = useState(true);
   const [loaded] = useFonts({
     OpenSansLight: require("../../assets/Fonts/Open_Sans/OpenSans-Light.ttf"),
@@ -100,7 +101,9 @@ const Slide = ({ poster, title }) => {
 
   return (
     <Container>
-      <PosterContainer source={{ uri: apiImagePath(poster) }} />
+      <TouchableOpacity onPress={(() => "Detail", { id })}>
+        <PosterContainer source={{ uri: apiImagePath(poster) }} />
+      </TouchableOpacity>
       <Box>
         <TitleBox>
           <FontAwesome5

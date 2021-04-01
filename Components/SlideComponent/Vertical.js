@@ -1,5 +1,5 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 import { apiImagePath } from "../api";
 import { trimText, ButtonColor } from "../utils";
@@ -55,7 +55,9 @@ const Vertical = ({ id, title, overview, poster, isShow = false }) => {
     <Container>
       <Data>
         <PosterBox>
-          <PosterContainer source={{ uri: apiImagePath(poster) }} />
+          <TouchableOpacity onPress={(() => "Detail", { id, isShow })}>
+            <PosterContainer source={{ uri: apiImagePath(poster) }} />
+          </TouchableOpacity>
           <HDBox>
             <Text>HD</Text>
           </HDBox>

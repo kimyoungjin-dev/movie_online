@@ -3,7 +3,6 @@ import Vertical from "../../Components/SlideComponent/Vertical";
 import VerticalScroll from "../../Components/SlideComponent/VerticalScroll";
 
 const AfterResults = ({ movieResults, tvResults }) => {
-  console.log(movieResults, tvResults);
   return (
     <>
       {movieResults.length > 0 && (
@@ -28,6 +27,7 @@ const AfterResults = ({ movieResults, tvResults }) => {
               title={show.original_name}
               overview={show.overview}
               poster={show.poster_path}
+              isShow={true}
             />
           ))}
         </VerticalScroll>

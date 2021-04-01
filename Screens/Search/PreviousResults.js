@@ -26,6 +26,7 @@ const PreviousResults = ({ moviePopular, tvPopular }) => {
             title={show.original_name}
             overview={show.overview}
             poster={show.poster_path}
+            isShow={true}
           />
         ))}
       </VerticalScroll>
