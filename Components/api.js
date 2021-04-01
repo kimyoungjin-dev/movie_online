@@ -14,24 +14,51 @@ const getAnything = async (path, params = {}) => {
   try {
     const {
       data: { results },
+      data,
     } = await request(path, params);
-    return [results];
+    return [results || data];
   } catch (error) {
     console.log(error);
     return error;
   }
 };
 
+//MovieApi
 export const MovieApi = {
   MovieNowPlaying: () => getAnything("/movie/now_playing"),
   MoviePopular: () => getAnything("/movie/popular"),
   MovieTopRated: () => getAnything("/movie/top_rated"),
   MovieUpcoming: () => getAnything("/movie/upcoming"),
   MovieCredit: () => getAnything(`/movie/${id}/credits`),
+
+  MovieDisCovery: (with_genres) =>
+    getAnything(`/discover/movie`, {
+      with_genres,
+    }),
+
   MovieDetail: (id) =>
     getAnything(`/movie/${id}`, {
       append_to_response: "videos",
     }),
+  MovieSearch: (query) => getAnything("/search/movie", { query }),
+};
+
+//tv api
+export const tvApi = {
+  showAiringToday: () => getAnything("/tv/airing_today"),
+  showPopular: () => getAnything("/tv/popular"),
+  showCredit: () => getAnything(`/tv/${id}/credits`),
+  showDisCovery: (with_genres) =>
+    getAnything(`/discover/tv`, {
+      with_genres,
+    }),
+
+  showDetail: (id) =>
+    getAnything(`/tv/${id}`, {
+      append_to_response: "videos",
+    }),
+
+  showSearch: (query) => getAnything("/search/tv", { query }),
 };
 
 export const apiImagePath = (
