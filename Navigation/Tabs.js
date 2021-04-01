@@ -2,12 +2,13 @@ import React, { useLayoutEffect } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "../Screens/Home";
 import Search from "../Screens/Search";
-import Folder from "../Screens/Folder";
+import Coming from "../Screens/Coming";
 import User from "../Screens/User";
-import { MaterialIcons, Feather } from "@expo/vector-icons";
-import styled from "styled-components/native";
-
-const Container = styled.View``;
+import {
+  MaterialIcons,
+  Feather,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
 
 const Tabs = createBottomTabNavigator();
 
@@ -27,8 +28,14 @@ export default ({ navigation, route }) => {
             iconName = "house";
           } else if (route.name === "Search") {
             iconName = "search";
-          } else if (route.name === "Folder") {
-            iconName = "folder-open";
+          } else if (route.name === "Coming") {
+            return (
+              <MaterialCommunityIcons
+                name="gesture-spread"
+                size={30}
+                color="white"
+              />
+            );
           } else if (route.name === "User") {
             return (
               <Feather
@@ -49,13 +56,16 @@ export default ({ navigation, route }) => {
       })}
       tabBarOptions={{
         labelStyle: { fontSize: 14 },
-        style: { backgroundColor: "rgb(31,32,34)", borderTopColor: "black" },
+        style: {
+          backgroundColor: "rgb(31,32,34)",
+          borderTopColor: "rgb(32,33,35)",
+        },
         showLabel: false,
       }}
     >
       <Tabs.Screen name="Home" component={Home} />
       <Tabs.Screen name="Search" component={Search} />
-      <Tabs.Screen name="Folder" component={Folder} />
+      <Tabs.Screen name="Coming" component={Coming} />
       <Tabs.Screen name="User" component={User} />
     </Tabs.Navigator>
   );
