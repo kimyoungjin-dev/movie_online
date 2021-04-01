@@ -1,6 +1,6 @@
 import AppLoading from "expo-app-loading";
 import React, { useState } from "react";
-import { Image } from "react-native";
+import { Image, StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import * as Font from "expo-font";
 import { Asset } from "expo-asset";
@@ -10,6 +10,8 @@ import {
   MaterialIcons,
   Feather,
   EvilIcons,
+  MaterialCommunityIcons,
+  Entypo,
 } from "@expo/vector-icons";
 import RootNav from "./Navigation/Root";
 
@@ -35,7 +37,9 @@ const App = () => {
       [Ionicons.font],
       [FontAwesome.font],
       [MaterialIcons.font],
-      [Feather.font][EvilIcons.font]
+      [Feather.font][EvilIcons.font],
+      [MaterialCommunityIcons.font],
+      [Entypo.font]
     );
     return Promise.all([...images, ...fonts]);
   };
@@ -44,9 +48,12 @@ const App = () => {
   return (
     <>
       {loading ? (
-        <NavigationContainer>
-          <RootNav />
-        </NavigationContainer>
+        <>
+          <StatusBar barStyle="light-content" />
+          <NavigationContainer>
+            <RootNav />
+          </NavigationContainer>
+        </>
       ) : (
         <AppLoading
           startAsync={start}
