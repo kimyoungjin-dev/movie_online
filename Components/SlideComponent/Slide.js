@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
-import { apiImagePath } from "../Components/api";
+import { apiImagePath } from "../../Components/api";
 import {
   Feather,
   FontAwesome,
-  Ionicons,
   MaterialCommunityIcons,
-  EvilIcons,
   FontAwesome5,
 } from "@expo/vector-icons";
 import { useFonts } from "expo-font";
+import { ButtonColor, trimText } from "../utils";
 
 const Container = styled.View`
   width: 100%;
@@ -38,7 +37,7 @@ const TitleBox = styled.View`
 const Title = styled.Text`
   color: white;
   font-size: 20px;
-  font-weight: bold;
+  font-family: "Dela_Gothic_One";
 `;
 
 const IconBox = styled.View`
@@ -84,14 +83,15 @@ const Button = styled.TouchableOpacity`
 
 const ButtonText = styled.Text`
   color: white;
-  font-family: "OpenSans";
+  font-family: "OpenSansLight";
 `;
 
-const Slide = ({ id, adult, poster, language, title, genre }) => {
-  const [playBackground, setPlayBackground] = useState(true);
+const Slide = ({ poster, title }) => {
   const [trailerBackground, setTrailerBackground] = useState(true);
   const [loaded] = useFonts({
-    OpenSans: require("../assets/Fonts/Open_Sans/OpenSans-Light.ttf"),
+    OpenSansLight: require("../../assets/Fonts/Open_Sans/OpenSans-Light.ttf"),
+    OpenSansSemiBold: require("../../assets/Fonts/Open_Sans/OpenSans-SemiBold.ttf"),
+    Dela_Gothic_One: require("../../assets/Fonts/Dela_Gothic_One/DelaGothicOne-Regular.ttf"),
   });
 
   if (!loaded) {
@@ -109,7 +109,7 @@ const Slide = ({ id, adult, poster, language, title, genre }) => {
             color="yellow"
             style={{ marginRight: 10 }}
           />
-          <Title style={{ fontFamily: "OpenSans" }}>{title}</Title>
+          <Title>{trimText(title, 20)}</Title>
         </TitleBox>
 
         <IconBox>
@@ -119,7 +119,7 @@ const Slide = ({ id, adult, poster, language, title, genre }) => {
       </Box>
 
       <BottomButtonContainer>
-        <Button style={{ backgroundColor: "rgb(242,184,51)" }}>
+        <Button style={{ backgroundColor: ButtonColor }}>
           <FontAwesome
             name="play-circle-o"
             size={20}
