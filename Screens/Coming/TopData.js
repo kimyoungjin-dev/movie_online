@@ -70,7 +70,7 @@ const Title = styled.Text`
 const Value = styled.Text`
   opacity: 0.6;
   color: white;
-  font-size: 14px;
+  font-size: 12px;
 `;
 
 const TopData = ({ showComing }) => {

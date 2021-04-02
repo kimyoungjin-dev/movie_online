@@ -5,10 +5,11 @@ import styled from "styled-components/native";
 import { apiImagePath } from "../../Components/api";
 import { FontAwesome } from "@expo/vector-icons";
 import { Text } from "react-native";
-import { LocaleDate } from "../../Components/utils";
+import { ButtonColor, LocaleDate } from "../../Components/utils";
 
 const Container = styled.View`
-  margin-bottom: 80px;
+  margin-bottom: 50px;
+  padding: 0px 15px;
 `;
 
 const PosterContainer = styled.Image`
@@ -19,13 +20,13 @@ const PosterContainer = styled.Image`
 const Data = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 5px;
+  margin-top: 20px;
 `;
 
 const Title = styled.Text`
   font-weight: bold;
   color: white;
-  font-size: 20px;
+  font-size: 17px;
 `;
 
 const Content = styled.View`
@@ -40,25 +41,25 @@ const IconContainer = styled.View`
 
 const InfoIcon = styled(FontAwesome)`
   color: white;
-  font-size: 20px;
+  font-size: 17px;
 `;
 
 const Year = styled.Text`
-  color: white;
+  color: ${ButtonColor};
   font-weight: bold;
-  font-size: 20px;
+  font-size: 13px;
   opacity: 0.7;
-  margin-bottom: 10px;
+  margin: 10px 0px;
 `;
 
 const Overview = styled.Text`
   opacity: 0.7;
   color: white;
-  font-size: 16px;
+  font-size: 13px;
+  margin-top: 10px;
 `;
 
 const Presenter = ({ movieComing, showComing, loading }) => {
-  console.log(movieComing);
   return (
     <ScrollContainer loading={loading}>
       <TopData showComing={showComing} />
