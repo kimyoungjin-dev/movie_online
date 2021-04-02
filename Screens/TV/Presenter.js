@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components/native";
-import { ActivityIndicator, ScrollView } from "react-native";
 import VerticalScroll from "../../Components/SlideComponent/VerticalScroll";
 import Vertical from "../../Components/SlideComponent/Vertical";
 import ScrollContainer from "../../Components/SlideComponent/ScrollContainer";
+import { useNavigation } from "@react-navigation/native";
+import { Text, TouchableOpacity } from "react-native";
 
 const Container = styled.View`
-  padding: 0px 15px;
+  padding: 50px 15px 0px 15px;
 `;
 
 const Presenter = ({
@@ -24,9 +25,13 @@ const Presenter = ({
   Western,
   loading,
 }) => {
+  const navigation = useNavigation();
   return (
-    <ScrollContainer>
+    <ScrollContainer loading={loading}>
       <Container>
+        <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+          <Text style={{ color: "white" }}>뒤로가기</Text>
+        </TouchableOpacity>
         <VerticalScroll title={"ActionAdventure"}>
           {ActionAdventure.map((show) => (
             <Vertical
