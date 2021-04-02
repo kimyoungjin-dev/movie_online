@@ -3,6 +3,7 @@ import { Text, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 import { apiImagePath } from "../api";
 import { trimText, ButtonColor } from "../utils";
+import { useNavigation } from "@react-navigation/native";
 
 const Container = styled.View`
   margin-bottom: 20px;
@@ -51,11 +52,20 @@ const HDBox = styled.View`
 `;
 
 const Vertical = ({ id, title, overview, poster, isShow = false }) => {
+  const navigation = useNavigation();
+
   return (
     <Container>
       <Data>
         <PosterBox>
-          <TouchableOpacity onPress={(() => "Detail", { id, isShow })}>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate("Detail", {
+                id,
+                isShow,
+              })
+            }
+          >
             <PosterContainer source={{ uri: apiImagePath(poster) }} />
           </TouchableOpacity>
           <HDBox>

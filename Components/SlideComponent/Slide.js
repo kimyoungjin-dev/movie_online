@@ -10,6 +10,7 @@ import {
 import { useFonts } from "expo-font";
 import { ButtonColor, trimText } from "../utils";
 import { TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const Container = styled.View`
   width: 100%;
@@ -38,7 +39,7 @@ const TitleBox = styled.View`
 const Title = styled.Text`
   color: white;
   font-size: 20px;
-  font-family: "Dela_Gothic_One";
+  font-family: "OpenSansSemiBold";
 `;
 
 const IconBox = styled.View`
@@ -89,10 +90,10 @@ const ButtonText = styled.Text`
 
 const Slide = ({ poster, title, id }) => {
   const [trailerBackground, setTrailerBackground] = useState(true);
+  const navigation = useNavigation();
+
   const [loaded] = useFonts({
-    OpenSansLight: require("../../assets/Fonts/Open_Sans/OpenSans-Light.ttf"),
     OpenSansSemiBold: require("../../assets/Fonts/Open_Sans/OpenSans-SemiBold.ttf"),
-    Dela_Gothic_One: require("../../assets/Fonts/Dela_Gothic_One/DelaGothicOne-Regular.ttf"),
   });
 
   if (!loaded) {
@@ -101,7 +102,14 @@ const Slide = ({ poster, title, id }) => {
 
   return (
     <Container>
-      <TouchableOpacity onPress={(() => "Detail", { id })}>
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate("Detail", {
+            id,
+            isShow,
+          })
+        }
+      >
         <PosterContainer source={{ uri: apiImagePath(poster) }} />
       </TouchableOpacity>
       <Box>
