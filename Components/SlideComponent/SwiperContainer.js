@@ -6,7 +6,7 @@ import Swiper from "react-native-web-swiper";
 const { height: HEIGHT } = Dimensions.get("window");
 
 const Container = styled.View`
-  height: ${HEIGHT / 3};
+  height: ${HEIGHT / 2.3};
   width: 100%;
 `;
 

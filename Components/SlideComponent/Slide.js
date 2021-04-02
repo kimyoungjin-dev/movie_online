@@ -9,16 +9,11 @@ import {
 } from "@expo/vector-icons";
 import { ButtonColor, trimText } from "../utils";
 import { useNavigation } from "@react-navigation/native";
+import { Image } from "react-native";
 
 const Container = styled.View`
   width: 100%;
   height: 100%;
-`;
-
-const PosterContainer = styled.Image`
-  height: 100%;
-  width: 100%;
-  position: absolute;
 `;
 
 const Header = styled.View`
@@ -90,7 +85,11 @@ const Slide = ({ poster, title, id }) => {
 
   return (
     <Container>
-      <PosterContainer source={{ uri: apiImagePath(poster) }} />
+      <Image
+        resizeMode="cover"
+        source={{ uri: apiImagePath(poster) }}
+        style={{ height: "100%", width: "100%", position: "absolute" }}
+      />
       <Header>
         <TitleBox>
           <FontAwesome5
