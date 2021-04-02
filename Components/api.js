@@ -60,11 +60,5 @@ export const tvApi = {
 
 export const apiImagePath = (
   path,
-  defaultPath = "https://unsplash.com/photos/uWjBqbCHY7g"
-) => {
-  if (path) {
-    return `https://image.tmdb.org/t/p/original/${path}`;
-  } else {
-    return defaultPath;
-  }
-};
+  defaultPath = "https://lh3.googleusercontent.com/proxy/Rr9Tr5xE6s5tzq-CfnBqDfBLWnYAnjfbWMZnMdgaOUeCVb8HBlIzuwd5OQf9VdKcsjsCzUV_MiC2aNRW1lUK23UW8zXcgQe1kxfUksgVu7EptapY2oGd3RI"
+) => (path ? `https://image.tmdb.org/t/p/original${path}` : defaultPath);
