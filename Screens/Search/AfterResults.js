@@ -1,10 +1,15 @@
 import React from "react";
 import Vertical from "../../Components/SlideComponent/Vertical";
 import VerticalScroll from "../../Components/SlideComponent/VerticalScroll";
+import styled from "styled-components/native";
+
+const Container = styled.View`
+  padding: 0px 5px;
+`;
 
 const AfterResults = ({ movieResults, tvResults }) => {
   return (
-    <>
+    <Container>
       {movieResults.length > 0 && (
         <VerticalScroll title="Movies">
           {movieResults.map((movie) => (
@@ -32,7 +37,7 @@ const AfterResults = ({ movieResults, tvResults }) => {
           ))}
         </VerticalScroll>
       )}
-    </>
+    </Container>
   );
 };
 
