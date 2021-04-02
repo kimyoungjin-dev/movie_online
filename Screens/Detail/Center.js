@@ -7,7 +7,7 @@ import { ButtonColor } from "../../Components/utils";
 const Container = styled.View`
   justify-content: center;
   align-items: center;
-  padding: 10px 0px;
+  margin-top: 20px;
 `;
 
 const List = styled.View`
@@ -28,7 +28,7 @@ const Line = styled.View`
   opacity: 0.3;
 `;
 
-const Center = () => {
+const Center = ({ result, openBrowser }) => {
   return (
     <Container>
       <Line></Line>
@@ -40,6 +40,9 @@ const Center = () => {
             size={24}
             color={ButtonColor}
             style={{ marginBottom: 5 }}
+            onPress={() =>
+              openBrowser(`https://www.imdb.com/title/${result.imdb_id}/`)
+            }
           />
           <IconName>Trailer</IconName>
         </View>
