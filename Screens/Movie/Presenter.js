@@ -1,12 +1,11 @@
 import React from "react";
 import styled from "styled-components/native";
-import { ActivityIndicator, ScrollView } from "react-native";
 import VerticalScroll from "../../Components/SlideComponent/VerticalScroll";
 import Vertical from "../../Components/SlideComponent/Vertical";
 import ScrollContainer from "../../Components/SlideComponent/ScrollContainer";
 
 const Container = styled.View`
-  padding: 0px 15px;
+  padding: 50px 15px 0px 15px;
 `;
 
 const MoviePresenter = ({
