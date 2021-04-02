@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  ActivityIndicator,
-  ScrollView,
-  TouchableOpacity,
-  Text,
-} from "react-native";
+import { TouchableOpacity, Text } from "react-native";
 import Slide from "../../Components/SlideComponent/Slide";
 import Horizontal from "../../Components/SlideComponent/Horizontal";
 import SwiperContainer from "../../Components/SlideComponent/SwiperContainer";
@@ -15,7 +10,7 @@ import { useNavigation } from "@react-navigation/native";
 import ScrollContainer from "../../Components/SlideComponent/ScrollContainer";
 
 const Container = styled.View`
-  padding: 0px 15px;
+  padding: 50px 15px 0px 15px;
 `;
 
 const Router = styled.View`
