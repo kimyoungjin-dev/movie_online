@@ -12,6 +12,7 @@ import {
   EvilIcons,
   MaterialCommunityIcons,
   Entypo,
+  AntDesign,
 } from "@expo/vector-icons";
 import RootNav from "./Navigation/Root";
 
@@ -39,7 +40,8 @@ const App = () => {
       [MaterialIcons.font],
       [Feather.font][EvilIcons.font],
       [MaterialCommunityIcons.font],
-      [Entypo.font]
+      [Entypo.font],
+      [AntDesign.font]
     );
     return Promise.all([...images, ...fonts]);
   };
