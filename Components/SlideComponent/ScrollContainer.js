@@ -6,8 +6,6 @@ const ScrollContainer = ({ loading, children }) => {
     <ScrollView
       style={{
         backgroundColor: "rgb(32,33,35)",
-        paddingLeft: 10,
-        paddingRight: 10,
       }}
       contentContainerStyle={{
         flex: loading ? 1 : "auto",
