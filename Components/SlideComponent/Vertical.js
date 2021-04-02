@@ -63,6 +63,7 @@ const Vertical = ({ id, title, overview, poster, isShow = false }) => {
               navigation.navigate("Detail", {
                 id,
                 isShow,
+                poster,
               })
             }
           >
