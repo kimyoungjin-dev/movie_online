@@ -3,6 +3,8 @@ import styled from "styled-components/native";
 import VerticalScroll from "../../Components/SlideComponent/VerticalScroll";
 import Vertical from "../../Components/SlideComponent/Vertical";
 import ScrollContainer from "../../Components/SlideComponent/ScrollContainer";
+import { Text, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const Container = styled.View`
   padding: 50px 15px 0px 15px;
@@ -21,9 +23,14 @@ const MoviePresenter = ({
   War,
   loading,
 }) => {
+  const navigation = useNavigation();
   return (
     <ScrollContainer loading={loading}>
       <Container>
+        <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+          <Text style={{ color: "white" }}>뒤로가기</Text>
+        </TouchableOpacity>
+
         <VerticalScroll title={"Action Movies"}>
           {Action.map((movie) => (
             <Vertical
