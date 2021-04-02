@@ -14,7 +14,7 @@ import {
   Entypo,
   AntDesign,
 } from "@expo/vector-icons";
-import RootNav from "./Navigation/Root";
+import Stack from "./Navigation/Stack";
 
 const loadImages = (images) =>
   images.map((image) => {
@@ -53,7 +53,7 @@ const App = () => {
         <>
           <StatusBar barStyle="light-content" />
           <NavigationContainer>
-            <RootNav />
+            <Stack />
           </NavigationContainer>
         </>
       ) : (
