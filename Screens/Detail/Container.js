@@ -1,18 +1,38 @@
 import React, { useState, useEffect } from "react";
-import { MovieApi } from "../../Components/api";
+import { MovieApi, tvApi } from "../../Components/api";
+import Presenter from "./Presenter";
 
-const Container = (props) => {
-  const [result, setResult] = useState({});
+const Container = ({
+  route: {
+    params: { id, isShow },
+  },
+}) => {
+  const [result, setResult] = useState({
+    data: [],
+  });
   const [loading, setLoading] = useState(true);
+  const [genres, setGenres] = useState({
+    Credit: [],
+  });
 
   const getData = async () => {
-    const [movieDetail] = await MovieApi.MovieDetail(id);
+    const [data] = isShow
+      ? await tvApi.showDetail(id)
+      : await MovieApi.MovieDetail(id);
+
+    const [Credit] = isShow
+      ? await tvApi.showCredit(id)
+      : await MovieApi.MovieCredit(id);
+    setResult(data);
+    setGenres(Credit);
+    setLoading(false);
   };
 
   useEffect(() => {
     getData();
   }, []);
-  return <></>;
+
+  return <Presenter result={result} loading={loading} {...genres} />;
 };
 
 export default Container;
