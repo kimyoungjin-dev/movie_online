@@ -7,9 +7,7 @@ import {
   MaterialCommunityIcons,
   FontAwesome5,
 } from "@expo/vector-icons";
-import { useFonts } from "expo-font";
 import { ButtonColor, trimText } from "../utils";
-import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 const Container = styled.View`
@@ -23,7 +21,7 @@ const PosterContainer = styled.Image`
   position: absolute;
 `;
 
-const Box = styled.View`
+const Header = styled.View`
   justify-content: space-between;
   padding: 0px 20px;
   flex-direction: row;
@@ -39,7 +37,6 @@ const TitleBox = styled.View`
 const Title = styled.Text`
   color: white;
   font-size: 20px;
-  font-family: "OpenSansSemiBold";
 `;
 
 const IconBox = styled.View`
@@ -85,34 +82,16 @@ const Button = styled.TouchableOpacity`
 
 const ButtonText = styled.Text`
   color: white;
-  font-family: "OpenSansLight";
 `;
 
 const Slide = ({ poster, title, id }) => {
   const [trailerBackground, setTrailerBackground] = useState(true);
   const navigation = useNavigation();
 
-  const [loaded] = useFonts({
-    OpenSansSemiBold: require("../../assets/Fonts/Open_Sans/OpenSans-SemiBold.ttf"),
-  });
-
-  if (!loaded) {
-    return null;
-  }
-
   return (
     <Container>
-      <TouchableOpacity
-        onPress={() =>
-          navigation.navigate("Detail", {
-            id,
-            isShow,
-          })
-        }
-      >
-        <PosterContainer source={{ uri: apiImagePath(poster) }} />
-      </TouchableOpacity>
-      <Box>
+      <PosterContainer source={{ uri: apiImagePath(poster) }} />
+      <Header>
         <TitleBox>
           <FontAwesome5
             name="hand-holding-heart"
@@ -127,8 +106,7 @@ const Slide = ({ poster, title, id }) => {
           <Icon name="bell" />
           <Badge />
         </IconBox>
-      </Box>
-
+      </Header>
       <BottomButtonContainer>
         <Button style={{ backgroundColor: ButtonColor }}>
           <FontAwesome
@@ -137,7 +115,9 @@ const Slide = ({ poster, title, id }) => {
             color="white"
             style={{ marginRight: 5 }}
           />
-          <ButtonText>Play</ButtonText>
+          <ButtonText onPress={() => navigation.navigate("Detail", { id })}>
+            Play
+          </ButtonText>
         </Button>
 
         <Button
@@ -154,7 +134,9 @@ const Slide = ({ poster, title, id }) => {
             color="white"
             style={{ marginRight: 5 }}
           />
-          <ButtonText>TRAILER</ButtonText>
+          <ButtonText onPress={() => navigation.navigate("Detail", { id })}>
+            TRAILER
+          </ButtonText>
         </Button>
       </BottomButtonContainer>
     </Container>
