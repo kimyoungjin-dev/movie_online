@@ -29,8 +29,6 @@ export const MovieApi = {
   MoviePopular: () => getAnything("/movie/popular"),
   MovieTopRated: () => getAnything("/movie/top_rated"),
   MovieUpcoming: () => getAnything("/movie/upcoming"),
-  MovieCredit: () => getAnything(`/movie/${id}/credits`),
-
   MovieDisCovery: (with_genres) =>
     getAnything(`/discover/movie`, {
       with_genres,
@@ -41,24 +39,23 @@ export const MovieApi = {
       append_to_response: "videos",
     }),
   MovieSearch: (query) => getAnything("/search/movie", { query }),
+  MovieCredit: (id) => getAnything(`/movie/${id}/credits`),
 };
 
 //tv api
 export const tvApi = {
   showAiringToday: () => getAnything("/tv/airing_today"),
   showPopular: () => getAnything("/tv/popular"),
-  showCredit: () => getAnything(`/tv/${id}/credits`),
   showDisCovery: (with_genres) =>
     getAnything(`/discover/tv`, {
       with_genres,
     }),
-
   showDetail: (id) =>
     getAnything(`/tv/${id}`, {
       append_to_response: "videos",
     }),
-
   showSearch: (query) => getAnything("/search/tv", { query }),
+  showCredit: (id) => getAnything(`/tv/${id}/credits`),
 };
 
 export const apiImagePath = (
