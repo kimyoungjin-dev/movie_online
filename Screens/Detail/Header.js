@@ -71,12 +71,19 @@ const GenreText = styled.Text`
   opacity: 0.8;
 `;
 
-const Header = ({ result }) => {
+const Header = ({ result, openBrowser }) => {
   return (
     <HeaderBox>
       <BackdropImage source={{ uri: apiImagePath(result.poster_path) }} />
 
-      <Play name="play" />
+      <Play
+        name="play"
+        onPress={() =>
+          openBrowser(
+            `https://www.youtube.com/watch?v=${result?.videos?.results[0]?.key}`
+          )
+        }
+      />
       <HeaderContents>
         <Title>{result.original_title || result.original_name}</Title>
         <SubContents>
