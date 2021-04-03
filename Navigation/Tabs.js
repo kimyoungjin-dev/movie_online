@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "../Screens/Home";
 import Search from "../Screens/Search";
 import Coming from "../Screens/Coming";
-import User from "../Screens/User";
+import Discovery from "../Screens/Discovery";
 import {
   MaterialIcons,
   Feather,
@@ -36,10 +36,10 @@ export default ({ navigation, route }) => {
                 color="white"
               />
             );
-          } else if (route.name === "User") {
+          } else if (route.name === "Discovery") {
             return (
               <Feather
-                name="user"
+                name="heart"
                 size={30}
                 color={focused ? "white" : "gray"}
               />
@@ -66,7 +66,7 @@ export default ({ navigation, route }) => {
       <Tabs.Screen name="Home" component={Home} />
       <Tabs.Screen name="Search" component={Search} />
       <Tabs.Screen name="Coming" component={Coming} />
-      <Tabs.Screen name="User" component={User} />
+      <Tabs.Screen name="Discovery" component={Discovery} />
     </Tabs.Navigator>
   );
 };
