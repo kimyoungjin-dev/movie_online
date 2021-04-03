@@ -29,6 +29,7 @@ export const MovieApi = {
   MoviePopular: () => getAnything("/movie/popular"),
   MovieTopRated: () => getAnything("/movie/top_rated"),
   MovieUpcoming: () => getAnything("/movie/upcoming"),
+  MDiscovery: () => getAnything("/discover/movie"),
   MovieDisCovery: (with_genres) =>
     getAnything(`/discover/movie`, {
       with_genres,
@@ -44,6 +45,7 @@ export const MovieApi = {
 
 //tv api
 export const tvApi = {
+  sDiscovery: () => getAnything("/discover/tv"),
   showAiringToday: () => getAnything("/tv/airing_today"),
   showPopular: () => getAnything("/tv/popular"),
   showDisCovery: (with_genres) =>
